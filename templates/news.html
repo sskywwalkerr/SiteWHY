@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static  %}
+{% block title_page %}
+    <title>Новости</title>
+{% endblock title_page %}
+{% block content %}
+	<section class="main-section client-part" id="client">
+		<!--main-section client-part-start-->
+		<div class="container">
+			<b class="quote-right wow fadeInDown delay-03"><i class="fa fa-quote-right"></i></b>
+			<div class="row">
+				<div class="col-lg-12">
+					<p class="client-part-haead wow fadeInDown delay-05">Дарим скидку -10% на первую покупку!</p>
+				</div>
+			</div>
+			<ul class="client wow fadeIn delay-05s">
+				<li><a href="#">
+            	<img src="{% static 'img/client-pic1.png' %}" alt="">
+                <h3></h3>
+                <span></span>
+            </a></li>
+			</ul>
+		</div>
+	</section>
+{% endblock content %}

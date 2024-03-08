@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static  %}
+{% block title_page %}
+    <title>Категории</title>
+{% endblock title_page %}
+{% block content %}
+	<section class="main-section" id="service">
+		<!--main-section-start-->
+		<div class="container">
+			<h2>Категории</h2>
+			<h6>Большое количество брендов кроссовок</h6>
+			<div class="row">
+				<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
+					<div class="service-list">
+						<div class="service-list-col1">
+							<img alt="Nikedesktop" data-src="https://static.street-beat.ru/upload/iblock/dee/dee09ebef63ba3cd543e46d7cc610baa.svg" src="https://static.street-beat.ru/upload/iblock/dee/dee09ebef63ba3cd543e46d7cc610baa.svg" lazy="loaded">
+						</div>
+						<div class="service-list-col2">
+							<h3>Nike</h3>
+							<p>Nike, мировой лидер в области спортивной обуви, задает темп в отрасли с момента своего основания.</p>
+						</div>
+					</div>
+					<div class="service-list">
+						<div class="service-list-col1">
+							<img alt="Jordandesktop" data-src="https://static.street-beat.ru/upload/iblock/646/646cdb4ecdc1694e7e0a181d50ead9e8.svg" src="https://static.street-beat.ru/upload/iblock/646/646cdb4ecdc1694e7e0a181d50ead9e8.svg" lazy="loaded">
+						</div>
+						<div class="service-list-col2">
+							<h3>Jordan</h3>
+							<p>Air Jordan, первоначально предназначенная для баскетбола, выпущена в 1984 году компанией Nike, которую носил Майкл Джордан в сезоне НБА 1984/85.</p>
+						</div>
+					</div>
+					<div class="service-list">
+						<div class="service-list-col1">
+							<img alt="New Balancedesktop" data-src="https://static.street-beat.ru/upload/iblock/269/269d85ff5a3fb8d1877058e8a752cf91.svg" src="https://static.street-beat.ru/upload/iblock/269/269d85ff5a3fb8d1877058e8a752cf91.svg" lazy="loaded">
+						</div>
+						<div class="service-list-col2">
+							<h3>New Balance</h3>
+							<p>New Balance изначально специализировалась на изготовлении супинаторов и ортопедической обуви на заказ.</p>
+						</div>
+					</div>
+					<div class="service-list">
+						<div class="service-list-col1">
+							<img alt="adidasdesktop" data-src="https://static.street-beat.ru/upload/iblock/94f/94f4c6a1cda2fd2ee25f7acc58c433fa.svg" src="https://static.street-beat.ru/upload/iblock/94f/94f4c6a1cda2fd2ee25f7acc58c433fa.svg" lazy="loaded">
+						</div>
+						<div class="service-list-col2">
+							<h3>Adidas</h3>
+							<p>Компания adidas, немецкая икона спортивной одежды, сочетает столетнее спортивное совершенство со стилем.</p>
+						</div>
+					</div>
+				</div>
+				<figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
+					<img src="{% static 'img/categories.jpg' %}" alt="">
+				</figure>
+
+			</div>
+		</div>
+	</section>
+{% endblock content %}
