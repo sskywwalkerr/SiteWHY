@@ -4,8 +4,21 @@
     <title>Магазин</title>
 {% endblock title_page %}
 {% block content %}
+    {% if user.is_authenticated %}    
+        <div style="position: absolute; right: 50%; transform: translateX(50%); margin-top: 30px;" ">
+            <button onclick="window.location.href={% url 'reg' %}" type="submit" class="btn btn-outline-info">Профиль</button>
+            <button onclick="window.location.href={% url 'exit' %}" type="submit" class="btn btn-outline-info">Выход</button>
+        </div>
+    {% else %}
+        <div style="position: absolute; right: 50%; transform: translateX(50%); margin-top: 30px;" ">
+            <button onclick="window.location.href={% url 'reg' %}" type="submit" class="btn btn-outline-info">Регистрация</button>
+            <button onclick="window.location.href={% url 'login' %}" type="submit" class="btn btn-outline-info">Вход</button>
+        </div>
+    {% endif %}
 <section class="main-section paddind" id="Portfolio">
     <div class="container">
+
+
         <h2>Магазин</h2>
         <h6>Свежее портфолио дизайнов, которые заставят вас желать большего.</h6>
         <div class="portfolioFilter">
@@ -20,46 +33,37 @@
 
     </div>
     <div class="portfolioContainer wow fadeInUp delay-04s">
-        <div class=" Portfolio-box printdesign">
-            <a href="img/Portfolio-pic1.jpg"><img src="{% static 'img/Portfolio-pic1.png' %}" alt=""></a>
-            <h3>New Balance</h3>
-            <p>NB 530 White Silver Navy</p>
+        {% for post in new %}
+            {% if post.type == "nike" %}
+                <div class=" Portfolio-box branding">
+                    <a href="img/Portfolio-pic3.jpg"><img src="{{ post.image.url }}" alt=""></a>
+                    <h3>{{ post.title }}</h3>
+                    <p>Модель: {{ post.description }}</p>
+                </div>
+
+            {% elif post.type == "jordan" %}
+                <div class="Portfolio-box webdesign">
+                    <a href="img/Portfolio-pic2(1).jpg"><img src="{{ post.image.url }}" alt=""></a>
+                    <h3>{{ post.title }}</h3>
+                    <p>Модель: {{ post.description }}</p>
+                </div>
+                
+                
+            {% elif post.type == "new balance" %}
+                <div class=" Portfolio-box printdesign">
+                    <a href="img/Portfolio-pic1.jpg"><img src="{{ post.image.url }}" alt=""></a>
+                    <h3>{{ post.title }}</h3>
+                    <p>Модель: {{ post.description }}</p>
+                </div>
+                
+            {% elif post.type == "adidas" %}
+                <div class=" Portfolio-box photography">
+                    <a href="img/Portfolio-pic4.jpg"><img src="{{ post.image.url }}" alt=""></a>
+                    <h3>{{ post.title }}</h3>
+                    <p>Модель: {{ post.description }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
         </div>
-        <div class=" Portfolio-box printdesign">
-            <a href="img/Portfolio-pic1(1).jpg"><img src="{% static 'img/Portfolio-pic1(1).png' %}" alt=""></a>
-            <h3>New Balance</h3>
-            <p>725 Metallic Silver White</p>
-        </div>
-        <div class="Portfolio-box webdesign">
-            <a href="img/Portfolio-pic2.jpg"><img src="{% static 'img/Portfolio-pic2.jpg' %}" alt=""></a>
-            <h3>Air Jordan</h3>
-            <p>OFF-WHITE x Air Jordan 5 Retro SP 'Muslin'</p>
-        </div>
-        <div class="Portfolio-box webdesign">
-            <a href="img/Portfolio-pic2(1).jpg"><img src="{% static 'img/Portfolio-pic2(1).jpg' %}" alt=""></a>
-            <h3>Air Jordan</h3>
-            <p>Gore-Tex Off Noir</p>
-        </div>
-        <div class=" Portfolio-box branding">
-            <a href="img/Portfolio-pic3.jpg"><img src="{% static 'img/Portfolio-pic3.png' %}" alt=""></a>
-            <h3>Nike</h3>
-            <p>Dunk Low Skateboarding Shoes Unisex</p>
-        </div>
-        <div class=" Portfolio-box photography">
-            <a href="img/Portfolio-pic4.jpg"><img src="{% static 'img/Portfolio-pic4.png' %}" alt=""></a>
-            <h3>adidas</h3>
-            <p>Ozweego Bunny Raf Simons Cream White</p>
-        </div>
-        <div class=" Portfolio-box branding">
-            <a href="img/Portfolio-pic5.jpg"><img src="{% static 'img/Portfolio-pic5.png' %}" alt=""></a>
-            <h3>Nike</h3>
-            <p>Dunk Low Off-White Lot 38</p>
-        </div>
-        <div class=" Portfolio-box photography">
-            <a href="img/Portfolio-pic6.jpg"><img src="{% static 'img/Portfolio-pic6.png' %}" alt=""></a>
-            <h3>adidas</h3>
-            <p>Originals Chunky Sneakers</p>
-        </div>
-    </div>
 </section>
 {% endblock content %}

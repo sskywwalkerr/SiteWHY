@@ -15,5 +15,6 @@ class Post(models.Model):
     ]
     type = models.CharField(choices=TYPE, max_length=50, default='nike', verbose_name='тип')
 
+
     def __str__(self):
         return self.title

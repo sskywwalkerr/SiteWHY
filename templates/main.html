@@ -45,6 +45,13 @@
 			<a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
 		</div>
 	</nav>
+    {% if messages %}
+        {% for mess in messages %}
+            <div class="alert-succes">
+            {{ mess }}
+            </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock content %}
 	<script type="text/javascript">
