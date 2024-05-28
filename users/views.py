@@ -1,7 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserOurRegistration
+from django.contrib.auth import logout
+
+
 
 def register(request):
     if request.method == 'POST':
@@ -12,4 +15,5 @@ def register(request):
             return redirect('home')
     else:
         form = UserOurRegistration()
-    return render(request, 'registration.html', {'form':form})
+    return render(request, 'registration.html', {'form': form})
+

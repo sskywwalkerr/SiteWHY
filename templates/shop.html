@@ -4,17 +4,6 @@
     <title>Магазин</title>
 {% endblock title_page %}
 {% block content %}
-    {% if user.is_authenticated %}    
-        <div style="position: absolute; right: 50%; transform: translateX(50%); margin-top: 30px;" ">
-            <button onclick="window.location.href={% url 'reg' %}" type="submit" class="btn btn-outline-info">Профиль</button>
-            <button onclick="window.location.href={% url 'exit' %}" type="submit" class="btn btn-outline-info">Выход</button>
-        </div>
-    {% else %}
-        <div style="position: absolute; right: 50%; transform: translateX(50%); margin-top: 30px;" ">
-            <button onclick="window.location.href={% url 'reg' %}" type="submit" class="btn btn-outline-info">Регистрация</button>
-            <button onclick="window.location.href={% url 'login' %}" type="submit" class="btn btn-outline-info">Вход</button>
-        </div>
-    {% endif %}
 <section class="main-section paddind" id="Portfolio">
     <div class="container">
 

@@ -15,12 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from blog import views
 from users import views as userViews
 from django.contrib.auth import views as authViews
+
+
+
+
+
 
 
 urlpatterns = [
@@ -31,10 +36,17 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('categories/', views.categories, name='categories'),
     path('contact/', views.contact, name='contact'),
-    path('registration/', userViews.register, name='reg'),
-    path('login/', authViews.LoginView.as_view(template_name='login.html'), name='login'),
-    path('exit/', authViews.LogoutView.as_view(template_name='blog/templates/index.html'), name='exit'),
+    #path('registration/', userViews.register, name='reg'),
+    #path('login/', authViews.LoginView.as_view(template_name='login.html'), name='login'),
+    #path('logout/', authViews.LogoutView.as_view(template_name='index.html'), name='logout'),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    path('api/v1/auth/', include('djoser.urls')),#new
+    re_path(r'^auth/', include('djoser.urls.authtoken')),#new
+    path('api/v1/user/',include('blog.user.urls')),
+
+
 ]
+
 if settings.DEBUG:
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
