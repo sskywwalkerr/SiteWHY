@@ -7,7 +7,6 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='Изображение')
     price = models.DecimalField(max_digits=50, decimal_places=2, verbose_name='Цена')
 
-
     TYPE = [
         ('nike', 'Nike'),
         ('jordan', 'Jordan'),
@@ -16,8 +15,14 @@ class Post(models.Model):
     ]
     type = models.CharField(choices=TYPE, max_length=50, default='nike', verbose_name='тип')
 
-
-
     def __str__(self):
         return self.title
 
+class Basket(models.Model):
+    #user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Корзина {self.post.title}'

@@ -39,9 +39,9 @@ urlpatterns = [
     #path('registration/', userViews.register, name='reg'),
     #path('login/', authViews.LoginView.as_view(template_name='login.html'), name='login'),
     #path('logout/', authViews.LogoutView.as_view(template_name='index.html'), name='logout'),
-    path('api/v1/drf-auth/', include('rest_framework.urls')),
-    path('api/v1/auth/', include('djoser.urls')),#new
-    re_path(r'^auth/', include('djoser.urls.authtoken')),#new
+    path('api/v1/drf-auth/', include('rest_framework.urls')),#авторизация
+    path('api/v1/auth/', include('djoser.urls')),#new регистрация
+    re_path(r'^auth/', include('djoser.urls.authtoken')),#new сами токены для аккаунтов /auth/token/login
     path('api/v1/user/',include('blog.user.urls')),
 
 

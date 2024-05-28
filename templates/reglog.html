@@ -1,0 +1,13 @@
+<!--Здесь регистрация и авторизация-->
+		<div class="container">
+            {% if user.is_authenticated %}
+                <div style="position: absolute; right: 50%; transform: translateX(450%); margin-top: 30px;" ">
+                    <button onclick="window.location.href={% url 'shop' %}" type="submit" class="btn btn-outline-info">Профиль</button>
+                    <button onclick="window.location.href={% url 'logout' %}" type="submit" class="btn btn-outline-info">Выход</button>
+                </div>
+            {% else %}
+                <div style="position: absolute; right: 50%; transform: translateX(400%); margin-top: 30px;" ">
+                    <button onclick="window.location.href={% url 'reg' %}" type="submit" class="btn btn-outline-info">Регистрация</button>
+                    <button onclick="window.location.href={% url 'login' %}" type="submit" class="btn btn-outline-info">Вход</button>
+                </div>
+            {% endif %}
