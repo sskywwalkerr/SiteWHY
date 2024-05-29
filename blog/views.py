@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
-from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect
+from .serializers import PostSerializer
+
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+
 def shop(request):
     new = Post.objects.all()
     return render(request, 'shop.html', {'new':new})
@@ -19,6 +23,9 @@ def categories(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def logout_view(request):
-    logout(request)
-    return redirect('/')
+
+class PostListView(APIView):
+    def get(self,request):
+        blog = Post.objects.filter(draft=False)
+        serializer = PostSerializer(blog, many=True)
+        return Response(serializer.data)
